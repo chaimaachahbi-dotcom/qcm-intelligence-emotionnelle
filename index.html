@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>QCM – Intelligence émotionnelle</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f5;
+    padding: 20px;
+}
+.container {
+    max-width: 700px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+}
+.question {
+    margin-bottom: 20px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: #45a049;
+}
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>QCM – Intelligence émotionnelle</h1>
+
+<label><b>Nom et Prénom :</b></label>
+<input type="text" id="name" placeholder="Entrez votre nom">
+
+<form id="quiz">
+
+<div class="question">
+<p>1. Quelle est la meilleure définition de l’intelligence émotionnelle ?</p>
+<input type="radio" name="q1" value="0"> Résoudre des problèmes mathématiques<br>
+<input type="radio" name="q1" value="1"> Reconnaître et gérer ses émotions et celles des autres<br>
+<input type="radio" name="q1" value="0"> Prendre des décisions rapidement<br>
+</div>
+
+<div class="question">
+<p>2. Selon Daniel Goleman, l’IE comprend :</p>
+<input type="radio" name="q2" value="0"> La logique et la mémoire<br>
+<input type="radio" name="q2" value="1"> L’empathie, la motivation et la gestion des émotions<br>
+<input type="radio" name="q2" value="0"> La créativité artistique<br>
+</div>
+
+<div class="question">
+<p>3. La conscience de soi permet :</p>
+<input type="radio" name="q3" value="0"> Ignorer ses émotions<br>
+<input type="radio" name="q3" value="1"> Reconnaître ses émotions et leur impact<br>
+<input type="radio" name="q3" value="0"> Contrôler les autres<br>
+</div>
+
+<div class="question">
+<p>4. Quelle technique aide à gérer le stress ?</p>
+<input type="radio" name="q4" value="0"> La colère<br>
+<input type="radio" name="q4" value="1"> La respiration profonde<br>
+<input type="radio" name="q4" value="0"> Réagir impulsivement<br>
+</div>
+
+<div class="question">
+<p>5. La motivation intrinsèque signifie :</p>
+<input type="radio" name="q5" value="0"> Être motivé par l’argent<br>
+<input type="radio" name="q5" value="1"> Être motivé par le plaisir personnel<br>
+<input type="radio" name="q5" value="0"> Être motivé par les autres<br>
+</div>
+
+<div class="question">
+<p>6. Pourquoi l’IE est importante ?</p>
+<input type="radio" name="q6" value="1"> Mieux gérer les relations et émotions<br>
+<input type="radio" name="q6" value="0"> Remplacer le QI<br>
+<input type="radio" name="q6" value="0"> Éviter toute émotion négative<br>
+</div>
+
+<button type="button" onclick="corriger()">Valider</button>
+</form>
+
+<div id="result"></div>
+</div>
+
+<script>
+function corriger() {
+    let score = 0;
+    let total = 6;
+    let name = document.getElementById("name").value;
+
+    for (let i = 1; i <= total; i++) {
+        let q = document.querySelector('input[name="q' + i + '"]:checked');
+        if (q) score += parseInt(q.value);
+    }
+
+    let pourcentage = Math.round((score / total) * 100);
+
+    document.getElementById("result").innerHTML =
+        "👤 " + name + "<br>✅ Score : " + score + " / " + total +
+        "<br>📊 Pourcentage : " + pourcentage + "%";
+}
+</script>
+
+</body>
+</html>
